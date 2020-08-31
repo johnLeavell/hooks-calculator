@@ -1,6 +1,6 @@
 import React from 'react';
 import ExpenseItem from './ExpenseItem';
-import {RiDeleteBin5Line} from 'react-icons/ri';
+import {AiFillDelete} from 'react-icons/ai';
 
 const ExpenseList = ({expenses}) => {
     return (
@@ -13,7 +13,7 @@ const ExpenseList = ({expenses}) => {
             {expenses.length > 0 && (
             <button classname='btn'>
                 Clear expenses
-                <RiDeleteBin5Line className='btn-icon'/>
+                <AiFillDelete className='btn-icon'/>
             </button>
             )}
         </>

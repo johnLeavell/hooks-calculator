@@ -11,7 +11,7 @@ const ExpenseList = ({expenses}) => {
             })}
             </ul>
             {expenses.length > 0 && (
-            <button classname='btn'>
+            <button className='btn'>
                 Clear expenses
                 <AiFillDelete className='btn-icon'/>
             </button>

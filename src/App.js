@@ -10,7 +10,7 @@ const initialExpenses = [
   {id: uuidv4(), charge: 'car payment', amount: 400},
   {id: uuidv4(), charge: 'credit card', amount: 1200}
 ];
-// console.log(initialExpenses);
+
 function App() {
   const [ expenses, setExpenses ] = useState(initialExpenses);
   return (

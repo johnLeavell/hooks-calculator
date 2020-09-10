@@ -12,45 +12,53 @@ const initialExpenses = [
 ];
 
 function App() {
-  // state values
-  // all expenses, add expense
-
-  const [ expenses, setExpenses ] = useState(initialExpenses);
+  // ************* state values *******************
+  const [expenses, setExpenses] = useState(initialExpenses);
   // single expense
-  const [charge, setCharge] = useState('');
-  //single amount
-  const [amount, setAmount] = useState('');
+  const [charge, setCharge] = useState("");
+  // single amount
+  const [amount, setAmount] = useState("");
   // alert
-  const [alert, setAlert] = useState({show: false});
-
-  // functionality
+  const [alert, setAlert] = useState({ show: false });
+  // ************* functionality *******************
   const handleCharge = e => {
-    setCharge(e.target.value)
+    setCharge(e.target.value);
   };
   const handleAmount = e => {
-    setAmount(e.target.value)
+    setAmount(e.target.value);
   };
-  //handle alert
-  const handleAlert = ({type, text}) => {
+  const handleAlert = ({ type, text }) => {
     setAlert({ show: true, type, text });
-    setTimeout(()=> {
-      setAlert({show: false})
-    }, 3000)
-  }
-
-  const handleSubmit = e =>{
+    setTimeout(() => {
+      setAlert({ show: false });
+    }, 3000);
+  };
+  const handleSubmit = e => {
     e.preventDefault();
     if (charge !== "" && amount > 0) {
       const singleExpense = { id: uuidv4(), charge, amount };
       setExpenses([...expenses, singleExpense]);
-      handleAlert({type: 'success', text: 'item added' }); 
+      handleAlert({ type: "success", text: "item added" });
       setCharge("");
       setAmount("");
+    } else {
+      handleAlert({
+        type: "danger",
+        text: `charge can't be empty value and amount value has to be bigger than zero`
+      });
     }
-    else{
-      //handle alert called
-      handleAlert({type: 'danger', text: `charge cant'be empty value and amount of value has to be bigger than zero`})
-    }
+  };
+  // clear all items
+  const clearItems = () => {
+    setExpenses([]);
+  };
+  // handle delete
+  const handleDelete = id => {
+    console.log(`item deleted : ${id}`);
+  };
+  // handle edit
+  const handleEdit = id => {
+    console.log(`item edited : ${id}`);
   };
 
   return (

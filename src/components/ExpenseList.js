@@ -1,29 +1,31 @@
 import React from "react";
-import Item from "./ExpenseItem";
-import { MdDelete } from "react-icons/md";
-const ExpenseList = ({ expenses, handleEdit, handleDelete, clearItems }) => {
+import { MdEdit, MdDelete } from "react-icons/md";
+const ExpenseItem = ({ expense, handleEdit, handleDelete }) => {
+  const { id, charge, amount } = expense;
   return (
-    <>
-      <ul className="list">
-        {expenses.map(expense => {
-          return (
-            <Item
-              key={expense.id}
-              expense={expense}
-              handleDelete={handleDelete}
-              handleEdit={handleEdit}
-            />
-          );
-        })}
-      </ul>
-      {expenses.length > 0 && (
-        <button className="btn" onClick={clearItems}>
-          clear expenses
-          <MdDelete className="btn-icon" />
+    <li className="item">
+      <div className="info">
+        <span className="expense">{charge}</span>
+        <span className="amount">${amount}</span>
+      </div>
+      <div>
+        <button
+          className="edit-btn"
+          aria-label="edit button"
+          onClick={() => handleEdit(id)}
+        >
+          <MdEdit />
         </button>
-      )}
-    </>
+        <button
+          className="clear-btn"
+          aria-label="delete button"
+          onClick={() => handleDelete(id)}
+        >
+          <MdDelete />
+        </button>
+      </div>
+    </li>
   );
 };
 
-export default ExpenseList;
+export default ExpenseItem;

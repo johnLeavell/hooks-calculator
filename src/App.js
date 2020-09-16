@@ -11,6 +11,9 @@ const initialExpenses = [
   {id: uuidv4(), charge: 'credit card', amount: 1200}
 ];
 
+const initialExpenses = localStorage.getItem("expenses")
+  ? JSON.parse(localStorage.getItem("expenses"))
+  : [];
 function App() {
   // ************* state values *******************
   // all expenses, add expense
